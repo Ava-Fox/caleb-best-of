@@ -1,0 +1,1 @@
+# List of all the quotes to insert into db
