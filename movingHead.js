@@ -50,7 +50,6 @@ const element = document.getElementsByClassName("sexy");
 let ball = element[0];
 
 function moveHead() {
- 
     let ballPos = ball.getBoundingClientRect();
     console.log(ballPos);
     let topBall = ballPos.top;
@@ -82,11 +81,5 @@ function changeDiv() {
     visibility = !visibility;
 
 }
-    moveHead();
-    changeDiv();
-
-// function head() {
-//     moveHead();
-//     changeDiv();
-// }
-// head();
+    // moveHead();
+    // changeDiv();
