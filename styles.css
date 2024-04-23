@@ -1,0 +1,33 @@
+#head {
+    width: 10%;
+    height: auto;
+    /* position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0; */
+}
+
+.content {
+    height: 100px;
+    font-size:large;
+    z-index: 100;
+    background-color: bisque;
+}
+
+body {
+    background-color: aliceblue;
+}
+
+.sexy {
+    position: fixed;
+    top: 0;
+    right: 60;
+}
+
+.marry-me {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    color: grey;
+    font-weight: bold;
+}
