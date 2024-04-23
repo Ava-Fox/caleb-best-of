@@ -4,3 +4,7 @@ This is a collection of quotes I found to bring me absolute delight while watchi
 
 Ideas:
     [] add image of him holding sword as cursor, where the tip of sword is where click
+    [] Navbar Left side of screen:
+        [] All quotes
+        [] Dropped chalk
+        [] Video clips

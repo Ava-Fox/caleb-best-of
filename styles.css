@@ -1,26 +1,26 @@
 #head {
-    width: 10%;
-    height: 10%;
+    width: 100px;
+
     /* position: absolute;
     top: 0;
-    left: 0;
-    z-index: 0; */
+    left: 0; */
+    /* z-index: 0; */
 }
 
 .content {
-    height: 100px;
+    /* height: 100px; */
     font-size:large;
     z-index: 100;
     background-color: bisque;
 }
 
 body {
-    background-color: aliceblue;
+    background-color: lightblue;
     /* cursor: url("sword.png"), auto; */
 }
 
 .sexy {
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 60;
 }
@@ -28,7 +28,7 @@ body {
 .marry-me {
     position: absolute;
     top: 10px;
-    left: 0;
+    left: 0px;
     color: grey;
     font-weight: bold;
 }
