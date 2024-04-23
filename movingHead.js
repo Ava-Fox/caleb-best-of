@@ -4,118 +4,80 @@ let moveLeft  = true;
 let moveRight = false;
 let ballSpeed = 2;
 
-function checkCollision(ball){
-    // move down 
-    if (!(bottomBall <= window.innerHeight)) {
-        return [true, "down"];
-    }
-    if (!(topBall >= 0)) {
-        return [true]
-    }
-    if (!(leftBall >= 0)) {
-
-    }
-    if (!(rightBall <= window.innerWidth)) {
-
-    }
-
-    return false;
-}
-// Checks collision: which is the if bottomBall <= window.innerHeight thing
-    // could call changeDirection with which direction to move or just return false
-// but the moving logic is gonna get messed up right?
-
-function changeDirection(direction){
-    // move down
-    if (direction === "down") {
-        // this actually moves the ball
-        ball.style.top = `${topBall + ballSpeed}px`
-        movingDown = true;
-        movingUp = false;
-    }
-    else if (direction === "up") {
-        ball.style.top = `${topBall - ballSpeed}px`
-        movingUp = true;
-        movingDown = false;
-    }
-    else if (direction === "left") {
-        ball.style.left = `${leftBall - ballSpeed}px`
-        moveLeft = true;
-        moveRight = false;
-    }
-
-    else if (direction === "right") {
-        ball.style.left = `${leftBall + ballSpeed}px`
-        moveRight = true;
-        moveLeft = false;
-    }
-
-    if (movingDown) {
-        if (bottomBall <= window.innerHeight) {
-            ball.style.top = `${topBall + ballSpeed}px`
-        }
-        else {
-            movingDown = false;
-            movingUp = true;
-        }
-    }
-    else if (movingUp) {
-        if (topBall >= 0) {
-            ball.style.top = `${topBall - ballSpeed}px`
-        }
-        else {
-            movingUp = false;
-            movingDown = true;
-        }
-    }
-    if (moveLeft) {
-        console.log('test left');
-
-        if (leftBall >= 0) {
-            ball.style.left = `${leftBall - ballSpeed}px`
-        }
-        // Hit Left wall
-        else {
-            moveLeft = false;
-            moveRight = true;
-            // scoreRight++;
-            // scoreRightEl.innerHTML = scoreRight;
-        }
-    }
-    else if (moveRight) {
-        console.log('test right');
-
-        if (rightBall <= window.innerWidth) {
-            ball.style.left = `${leftBall + ballSpeed}px`
-        }
-        // Hit right wall
-        else {
-            moveRight = false;
-            moveLeft = true;
-            // scoreLeft++;
-            // scoreLeftEl.innerHTML = scoreLeft;  
-        }
-    }
-}
-
-let moveHeadTimer  = setInterval(moveHead, 2000); // set to 60000 for 60 seconds 
-// moveHeadTimer called too fast, call sep function for collision test true/false
-function moveHead() {
-    let collision = checkCollision()
-    if (collision) {
-        changeDirection(collision[1]) // gives changeDirection where to go
-    }
-    const element = document.getElementsByClassName("sexy");
-    let ball = element[0];
-    let ballPos = ball.getBoundingClientRect();
+// Possible problem: if hits corner of screen and so there are two collision cases
+function checkCollision(ballPos){
     let topBall = ballPos.top;
     let bottomBall = ballPos.bottom;
     let leftBall = ballPos.left;
     let rightBall = ballPos.right;
-    
-    return ballPos;
+    // move down 
+    if (!(bottomBall <= window.innerHeight)) {
+        return [true, "down"];
+    }
+    // move up
+    if (!(topBall >= 0)) {
+        return [true, "up"]
+    }
+    // move left
+    if (!(leftBall >= 0)) {
+        return [true, "left"]
+    }
+    // move right
+    if (!(rightBall <= window.innerWidth)) {
+        return [true, "right"]
+    }
+
+    return false;
 }
 
+function changeDirection(direction){
+    // move down
+    if (direction === "down") {
+        movingDown = true;
+        movingUp = false;
+    }
+    else if (direction === "up") {
+        movingUp = true;
+        movingDown = false;
+    }
+    else if (direction === "left") {
+        moveLeft = true;
+        moveRight = false;
+    }
+    else if (direction === "right") {
+        moveRight = true;
+        moveLeft = false;
+    }
+}
+
+let moveHeadTimer  = setInterval(moveHead, 17); // set to 60000 for 60 seconds 
+// moveHeadTimer called too fast, call sep function for collision test true/false
+function moveHead() {
+    const element = document.getElementsByClassName("sexy");
+    let ball = element[0];
+    let ballPos = ball.getBoundingClientRect();
+    let topBall = ballPos.top;
+    let leftBall = ballPos.left;
+    // check to see if collision or no
+    let collision = checkCollision(ballPos)
+    // then move direction depending
+    if (collision) {
+        changeDirection(collision[1]) // gives changeDirection where to go
+    }
+    if (movingDown) {
+        ball.style.top = `${topBall + ballSpeed}px`
+    }
+    else if (movingUp) {
+        ball.style.top = `${topBall - ballSpeed}px`
+    }
+    if (moveLeft) {
+        ball.style.left = `${leftBall - ballSpeed}px`
+    }
+    else if (moveRight) {
+        ball.style.left = `${leftBall + ballSpeed}px`
+    }
+    return ballPos;
+}
 
 let visibility = true;
 let timer  = setInterval(changeDiv, 2000); //set to 60000 for 60 seconds 2000
