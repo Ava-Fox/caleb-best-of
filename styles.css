@@ -1,6 +1,6 @@
 #head {
     width: 10%;
-    height: auto;
+    height: 10%;
     /* position: absolute;
     top: 0;
     left: 0;
@@ -16,6 +16,7 @@
 
 body {
     background-color: aliceblue;
+    /* cursor: url("sword.png"), auto; */
 }
 
 .sexy {

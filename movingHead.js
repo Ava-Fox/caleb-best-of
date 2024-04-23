@@ -1,7 +1,10 @@
+// BITCHIN HOTKEY: CMD L
+// OPTION ARROW
+
 let movingDown = true;
 let movingUp = false;
-let moveLeft  = true;
-let moveRight = false;
+let moveLeft  = false;
+let moveRight = true;
 let ballSpeed = 2;
 
 // Possible problem: if hits corner of screen and so there are two collision cases
@@ -10,24 +13,35 @@ function checkCollision(ballPos){
     let bottomBall = ballPos.bottom;
     let leftBall = ballPos.left;
     let rightBall = ballPos.right;
-    // move down 
-    if (!(bottomBall <= window.innerHeight)) {
-        return [true, "down"];
-    }
-    // move up
-    if (!(topBall >= 0)) {
-        return [true, "up"]
-    }
-    // move left
-    if (!(leftBall >= 0)) {
-        return [true, "left"]
-    }
-    // move right
-    if (!(rightBall <= window.innerWidth)) {
-        return [true, "right"]
+    // move down
+    console.log("window: ",  window.innerWidth);
+    console.log('1')
+
+    if (topBall <= 0) {
+        // if it hits the top, then there has been a top collision and you should move down
+        return "down";
     }
 
-    return false;
+    // move up
+    console.log('2')
+    // bottom collision
+    if (bottomBall >= window.innerHeight) {
+        return "up";
+    }
+    console.log('3')
+
+    // right collision  move left
+    if (rightBall >= window.innerWidth) {
+        console.log("Hit left");
+
+        return "right";
+    }
+    console.log('4')
+    // hit left
+    if (leftBall <= 0) {
+        return "left";
+        }
+    return 0;
 }
 
 function changeDirection(direction){
@@ -49,20 +63,22 @@ function changeDirection(direction){
         moveLeft = false;
     }
 }
-
+// Deactivated moveHead function
 let moveHeadTimer  = setInterval(moveHead, 17); // set to 60000 for 60 seconds 
 // moveHeadTimer called too fast, call sep function for collision test true/false
+const element = document.getElementsByClassName("sexy");
+let ball = element[0];
 function moveHead() {
-    const element = document.getElementsByClassName("sexy");
-    let ball = element[0];
+ 
     let ballPos = ball.getBoundingClientRect();
     let topBall = ballPos.top;
     let leftBall = ballPos.left;
     // check to see if collision or no
     let collision = checkCollision(ballPos)
+
     // then move direction depending
-    if (collision) {
-        changeDirection(collision[1]) // gives changeDirection where to go
+    if (collision != 0) {
+        changeDirection(collision) // gives changeDirection where to go
     }
     if (movingDown) {
         ball.style.top = `${topBall + ballSpeed}px`
