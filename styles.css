@@ -21,6 +21,7 @@ body {
 
 .sexy {
     position: absolute;
+    width: 100px;
     top: 0;
     right: 60;
 }
