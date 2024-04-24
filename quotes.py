@@ -28,17 +28,15 @@ quotes = {
     }
 }
 
-# Wait, why am I doing this again??
-    # Like that's literally a database up there right, like that's the thing right... like what.
-
 # Ok, so...
-
 # For each quote, I can have the terminal prompt me yes or no questions and then insert into database depending on answer
     # If still have quotes left, prompt for quote
     # Fill up this dict first, then will go through database and insert each quote in each table according to info provided
-prompt = "Insert quote, (q to quit)"
+
+prompt = "\n°º¤ø,¸¸,ø¤º°`°º¤ø,¸,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸ Insert quote! (q to quit) °º¤ø,¸¸,ø¤º°`°º¤ø,¸,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸\n"
 print(prompt)
 
+#Gathering data...
 quotes_remaining = True
 while quotes_remaining:
     current_quote = input("Quote: ")
@@ -86,7 +84,7 @@ while quotes_remaining:
             if is_action in options:
                 if is_action == "y":
                     is_action = True
-                    description = input("Description of action: \n")
+                    description = input("Description of action: ")
                 else:
                     is_action = False
                     description = None
@@ -106,4 +104,5 @@ while quotes_remaining:
         is_action = False
         description = None
         timestamp = None
+    
     print(f"author: {author}\n quote: {current_quote}\n is chalk: {is_chalk} \n dropped chalk? {dropped}\n is action: {is_action}\n action description: {description}\n timestamp: {timestamp}\n")
