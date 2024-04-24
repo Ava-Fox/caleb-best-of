@@ -17,7 +17,8 @@ This is a collection of quotes I found to bring me absolute delight while watchi
                 - [ ] Video clips
                     - If timestamps
     - [ ] SQL
-        - [ ] schema
+        - [x] schema
+        - [ ] insert quotes and whatnot
         
 
 ###### Credits:
