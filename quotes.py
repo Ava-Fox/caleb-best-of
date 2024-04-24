@@ -107,24 +107,35 @@ def gather_quotes():
             description = None
             timestamp = None
 
-        # Now we insert everything into dictionary
+        insert_dictionary([author, current_quote, is_chalk, dropped, is_action, description, timestamp])
+
+def insert_dictionary(data):
+        author = data[0]
+        current_quote = data[1]
+        is_chalk = data[2]
+        dropped = data[3]
+        is_action = data[4]
+        description = data[5]
+        timestamp = data[6]
+        
+     # Now we insert everything into dictionary
         # Right now just replaces current value and doesn't add more things... need to update dict
         # Cuz we're adding a new quote in "quotes" dict
         new_quote = quotes["author"][author]["quotes"]
         # Insert quote... bruh is quote even a word anymore????
         # Is this legal? This is fucking breaking my brain... it needs a different structure
         # car.update({"color": "White"})
-        insert_quote = {"quote": current_quote}
-        insert_chalk = {"isChalk": [is_chalk, dropped]}
-        insert_action = {"isAction": [is_action, description]}
-        insert_timestamp = {"timestamp": timestamp}
-
-        insert_statements = [insert_quote, insert_chalk, insert_action, insert_timestamp]
+        insert_statement = {
+            "quote": current_quote,
+            "isChalk": [is_chalk, dropped],
+            "isAction": [is_action, description],
+            "timestamp": timestamp
+        }
         
-        for statement in insert_statements:
-            new_quote.update(statement) # this is so fuckng dumb
+        new_quote.update(insert_statement) # this is so fuckng dumb
             
         # Still has same problem... wrong method? Why is there no push method I'm so confused. 
+        # Is the process wrong?????????????????????????????????????????????
 
 if __name__ == "__main__":
     gather_quotes()
