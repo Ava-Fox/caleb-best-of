@@ -21,7 +21,7 @@ This is a collection of quotes I found to bring me absolute delight while watchi
         - [ ] insert quotes and whatnot
             - [ ] python tool
                 - [x] general structure
-                - [ ] enter info into dict
+                - [x] enter info into dict
                 - [ ] go through dict info and enter into db
         
 

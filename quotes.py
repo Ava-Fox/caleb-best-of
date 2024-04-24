@@ -108,18 +108,24 @@ def gather_quotes():
             timestamp = None
 
         # Now we insert everything into dictionary
-        this_quote = quotes["author"][author]["quotes"]
-        #Insert quote... bruh is quote even a word anymore????
-        this_quote["quote"] = current_quote
-        this_quote["isChalk"][0] = is_chalk
-        this_quote["isChalk"][1] = dropped
-        this_quote["isAction"][0] = is_action
-        this_quote["isAction"][1] = description
-        this_quote["timestamp"] = timestamp
-        print(quotes)
-        
-        #print(f"author: {author}\n quote: {current_quote}\n is chalk: {is_chalk} \n dropped chalk? {dropped}\n is action: {is_action}\n action description: {description}\n timestamp: {timestamp}\n")
+        # Right now just replaces current value and doesn't add more things... need to update dict
+        # Cuz we're adding a new quote in "quotes" dict
+        new_quote = quotes["author"][author]["quotes"]
+        # Insert quote... bruh is quote even a word anymore????
+        # Is this legal? This is fucking breaking my brain... it needs a different structure
+        # car.update({"color": "White"})
+        insert_quote = {"quote": current_quote}
+        insert_chalk = {"isChalk": [is_chalk, dropped]}
+        insert_action = {"isAction": [is_action, description]}
+        insert_timestamp = {"timestamp": timestamp}
 
+        insert_statements = [insert_quote, insert_chalk, insert_action, insert_timestamp]
+        
+        for statement in insert_statements:
+            new_quote.update(statement) # this is so fuckng dumb
+            
+        # Still has same problem... wrong method? Why is there no push method I'm so confused. 
 
 if __name__ == "__main__":
     gather_quotes()
+    print(quotes)
