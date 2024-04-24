@@ -1,6 +1,7 @@
 // BITCHIN HOTKEY: CMD L
 // OPTION ARROW
 
+
 let xDirection = 1;
 let yDirection = 1;
 let ballSpeed = 2;
@@ -12,29 +13,21 @@ function checkCollision(ballPos){
     let leftBall = ballPos.left;
     let rightBall = ballPos.left + ballPos.width;
     // move down
-    console.log("window: ",  window.innerWidth);
-    console.log('1')
-
     if (topBall <= 0) {
         // if it hits the top, then there has been a top collision and you should move down
         yDirection = 1;
     }
 
     // move up
-    console.log('2')
     // bottom collision
-    console.log(`inner height: ${window.innerHeight}`);
-
     if (bottomBall >= window.innerHeight) {
         yDirection = -1;
     }
-    console.log('3')
 
     // right collision  move left
     if (rightBall >= window.innerWidth) {
         xDirection = -1;
     }
-    console.log('4')
     // hit left
     if (leftBall <= 0) {
         xDirection = 1;
@@ -66,7 +59,7 @@ function moveHead() {
 
 let visibility = true;
 let timer  = setInterval(changeDiv, 2000); //set to 60000 for 60 seconds 2000
-// IIFE : Immediately Invoked Function Expression
+// IIFE : Immediately Invoked Function Expression (Just, like... a thing to know)
 function changeDiv() {
     var currentElement = document.getElementsByClassName("marry-me");
     console.log("hey Caleb this isn't a joke");
@@ -81,5 +74,5 @@ function changeDiv() {
     visibility = !visibility;
 
 }
-    // moveHead();
-    // changeDiv();
+
+// HAHAHA this is so dumb...
