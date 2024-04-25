@@ -5,6 +5,7 @@ This is a collection of quotes I found to bring me absolute delight while watchi
 ###### Ideas:
     - [x] Bouncing head lol
     - [ ] add image of him holding sword as cursor, where the tip of sword is where click
+    - [ ] Chrome extension where it will sometimes (1/10 times?) open to a random best-of timestamp moment ( thx Emily this is a good one <3 )
     - [ ] Navbar Left side of screen:
         - [ ] Author
             - [ ] Al
@@ -25,7 +26,14 @@ This is a collection of quotes I found to bring me absolute delight while watchi
                 - [ ] go through dict info and enter into db
         
 
-###### Random tips
+###### Random tips learned
+    - BITCHIN' HOTKEYS 
+        - CMD L
+        - OPTION ARROW
+    - prettify dictionary output
+        - pprint.pprint(quotes)
+    - fake tables
+        - Mockaroo.com
 
 ###### Credits:
     Huge shoutout to Will W., Al Sweigart, and Charlie Volow for pairing with me on this!

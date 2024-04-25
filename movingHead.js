@@ -1,5 +1,4 @@
-// BITCHIN HOTKEY: CMD L
-// OPTION ARROW
+
 
 
 let xDirection = 1;

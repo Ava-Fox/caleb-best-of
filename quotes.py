@@ -3,14 +3,7 @@ import pprint as pp
 db = SQL("sqlite:///calebBestOf.db")
 
 # List of all the quotes to insert into db
-# Should I add frontend to this?? I mean, could be awesome to have in the digigarden!
-# Maybe actually do in javascript??
 # Concatinated string for timestamps? Same link but add &t=?h?m?s
-# Mockaroo.com fake tables
-# pprint pprint.pprint(quotes)
-# list.append()
-
-# Ok, now it friggen adds an empty insert_statement to quotes when you put q
 
 quotes = []
     # {
@@ -20,7 +13,7 @@ quotes = []
     #     'isAction': [bool, ""],
     #     'timestamp': ""
     #     }
-    
+
 # Ok, so...
 # For each quote, I can have the terminal prompt me yes or no questions and then insert into database depending on answer
     # If still have quotes left, prompt for quote
@@ -34,7 +27,6 @@ def gather_quotes():
     quotes_remaining = True
     while quotes_remaining:
         current_quote = input("Quote: ")
-        # Not fully breaking out of loop? OR is 
         if current_quote == "q":
             quotes_remaining = False
             break
@@ -48,10 +40,6 @@ def gather_quotes():
                     author = "caleb"
                 else:
                     author = "al"
-                
-                # for quote in quotes.keys():
-                #     if quote["author"] == author:
-
                 break
         if author == "caleb":
             while True:
@@ -103,22 +91,20 @@ def gather_quotes():
 
         insert_dictionary([author, current_quote, is_chalk, dropped, is_action, description, timestamp])
 
-def insert_dictionary(data):
-        author = data[0]
-        current_quote = data[1]
-        is_chalk = data[2]
-        dropped = data[3]
-        is_action = data[4]
-        description = data[5]
-        timestamp = data[6]
-        
-     # Now we insert everything into dictionary
-        # Right now just replaces current value and doesn't add more things... need to update dict
-        # Cuz we're adding a new quote in "quotes" dict
-        # Insert quote... bruh is quote even a word anymore????
-        # Is this legal? This is fucking breaking my brain... it needs a different structure
-        # car.update({"color": "White"})
-        insert_statement = {
+def insert_dictionary(data):    
+    """ 
+    Now we insert everything into dictionary
+    Insert quote... bruh is quote even a word anymore????
+    Is this legal? This is fucking breaking my brain...
+    """
+    author = data[0]
+    current_quote = data[1]
+    is_chalk = data[2]
+    dropped = data[3]
+    is_action = data[4]
+    description = data[5]
+    timestamp = data[6]
+    insert_statement = {
             "author": author,
             "quote": current_quote,
             "isChalk": [is_chalk, dropped],
@@ -126,10 +112,9 @@ def insert_dictionary(data):
             "timestamp": timestamp
         }
         
-        quotes.append(insert_statement) # this is so fuckng dumb
+    quotes.append(insert_statement) # this is so fuckng dumb
             
     
-
 if __name__ == "__main__":
     gather_quotes()
     pp.pprint(quotes)
