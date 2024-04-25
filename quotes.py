@@ -1,4 +1,5 @@
 from cs50 import SQL
+import pprint as pp
 db = SQL("sqlite:///calebBestOf.db")
 
 # List of all the quotes to insert into db
@@ -6,27 +7,39 @@ db = SQL("sqlite:///calebBestOf.db")
 # Maybe actually do in javascript??
 # Concatinated string for timestamps? Same link but add &t=?h?m?s
 # Mockaroo.com fake tables
+# pprint pprint.pprint(quotes)
+# list.append()
 
-quotes = {
-    "author": {
-        "caleb": {
-            "quotes": {
-                "quote": "",
-                "isChalk": [bool, bool], # First bool = if chalk instance, second is whether or not he dropped it
-                "isAction": [bool, ""], # Is it an action, and if so what is it's description
-                "timestamp": ""
-                },
-        },
-        "al": {
-            "quotes": {
-                "quote": "",
-                "isChalk": [bool, bool], # Is just gonna be no
-                "isAction": [bool, ""], 
-                "timestamp": ""
-                }
+quotes = [
+    {
+        'author': "", 
+        'quote': "",
+        'isChalk': [bool, bool],
+        'isAction': [bool, ""],
+        'timestamp': ""
         }
-    }
-}
+]
+
+# quotes = {
+#     "author": {
+#         "caleb": {
+#             "quotes": {
+#                 "quote": "",
+#                 "isChalk": [bool, bool], # First bool = if chalk instance, second is whether or not he dropped it
+#                 "isAction": [bool, ""], # Is it an action, and if so what is it's description
+#                 "timestamp": ""
+#                 },
+#         },
+#         "al": {
+#             "quotes": {
+#                 "quote": "",
+#                 "isChalk": [bool, bool], # Is just gonna be no
+#                 "isAction": [bool, ""], 
+#                 "timestamp": ""
+#                 }
+#         }
+#     }
+# }
 
 # Ok, so...
 # For each quote, I can have the terminal prompt me yes or no questions and then insert into database depending on answer
@@ -121,22 +134,22 @@ def insert_dictionary(data):
      # Now we insert everything into dictionary
         # Right now just replaces current value and doesn't add more things... need to update dict
         # Cuz we're adding a new quote in "quotes" dict
-        new_quote = quotes["author"][author]["quotes"]
         # Insert quote... bruh is quote even a word anymore????
         # Is this legal? This is fucking breaking my brain... it needs a different structure
         # car.update({"color": "White"})
         insert_statement = {
+            "author": author,
             "quote": current_quote,
             "isChalk": [is_chalk, dropped],
             "isAction": [is_action, description],
             "timestamp": timestamp
         }
         
-        new_quote.update(insert_statement) # this is so fuckng dumb
+        quotes.append(insert_statement) # this is so fuckng dumb
             
         # Still has same problem... wrong method? Why is there no push method I'm so confused. 
         # Is the process wrong?????????????????????????????????????????????
 
 if __name__ == "__main__":
     gather_quotes()
-    print(quotes)
+    pp.pprint(quotes)
