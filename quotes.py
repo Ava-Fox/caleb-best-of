@@ -3,8 +3,6 @@ import pprint as pp
 db = SQL("sqlite:///calebBestOf.db")
 
 # List of all the quotes to insert into db
-# Concatinated string for timestamps? Same link but add &t=?h?m?s
-
 quotes = []
     # {
     #     'author': "", 
@@ -91,6 +89,7 @@ def gather_quotes():
 
         insert_dictionary([author, current_quote, is_chalk, dropped, is_action, description, timestamp])
 
+
 def insert_dictionary(data):    
     """ 
     Now we insert everything into dictionary
@@ -113,8 +112,25 @@ def insert_dictionary(data):
         }
         
     quotes.append(insert_statement) # this is so fuckng dumb
-            
-    
+
+
+def insert_sql(quote_list):
+    """We finally puttin this mf into a database"""
+     # {
+    #     'author': "", 
+    #     'quote': "",
+    #     'isChalk': [bool, bool],
+    #     'isAction': [bool, ""],
+    #     'timestamp': ""
+    #     }
+    for current_quote in quote_list:
+        author = current_quote["author"]
+        quote = current_quote["quote"]
+        isChalk = current_quote["isChalk"]
+        isAction = current_quote["isAction"]
+        timestamp = current_quote["timestamp"]
+
+
 if __name__ == "__main__":
     gather_quotes()
     pp.pprint(quotes)

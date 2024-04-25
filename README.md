@@ -4,6 +4,11 @@ This is a collection of quotes I found to bring me absolute delight while watchi
 
 ###### Ideas:
     - [x] Bouncing head lol
+    - [ ] Create a password login for something only he would know and upon entry I give him my contact info and social security number (for the marriage contract)
+        - COntact info is accessed via database download 
+            - table full of info
+            - [ ] talk to someone who actually knows security 
+                - fake SSN lol 0000-00000-000000...
     - [ ] add image of him holding sword as cursor, where the tip of sword is where click
     - [ ] Chrome extension where it will sometimes (1/10 times?) open to a random best-of timestamp moment ( thx Emily this is a good one <3 )
     - [ ] Navbar Left side of screen:
@@ -24,7 +29,8 @@ This is a collection of quotes I found to bring me absolute delight while watchi
                 - [x] general structure
                 - [x] enter info into dict
                 - [ ] go through dict info and enter into db
-        
+
+        - Concatinated string for timestamps? Same link but add &t=?h?m?s
 
 ###### Random tips learned
     - BITCHIN' HOTKEYS 
