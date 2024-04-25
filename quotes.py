@@ -10,37 +10,17 @@ db = SQL("sqlite:///calebBestOf.db")
 # pprint pprint.pprint(quotes)
 # list.append()
 
-quotes = [
-    {
-        'author': "", 
-        'quote': "",
-        'isChalk': [bool, bool],
-        'isAction': [bool, ""],
-        'timestamp': ""
-        }
-]
+# Ok, now it friggen adds an empty insert_statement to quotes when you put q
 
-# quotes = {
-#     "author": {
-#         "caleb": {
-#             "quotes": {
-#                 "quote": "",
-#                 "isChalk": [bool, bool], # First bool = if chalk instance, second is whether or not he dropped it
-#                 "isAction": [bool, ""], # Is it an action, and if so what is it's description
-#                 "timestamp": ""
-#                 },
-#         },
-#         "al": {
-#             "quotes": {
-#                 "quote": "",
-#                 "isChalk": [bool, bool], # Is just gonna be no
-#                 "isAction": [bool, ""], 
-#                 "timestamp": ""
-#                 }
-#         }
-#     }
-# }
-
+quotes = []
+    # {
+    #     'author': "", 
+    #     'quote': "",
+    #     'isChalk': [bool, bool],
+    #     'isAction': [bool, ""],
+    #     'timestamp': ""
+    #     }
+    
 # Ok, so...
 # For each quote, I can have the terminal prompt me yes or no questions and then insert into database depending on answer
     # If still have quotes left, prompt for quote
@@ -54,6 +34,7 @@ def gather_quotes():
     quotes_remaining = True
     while quotes_remaining:
         current_quote = input("Quote: ")
+        # Not fully breaking out of loop? OR is 
         if current_quote == "q":
             quotes_remaining = False
             break
@@ -147,8 +128,7 @@ def insert_dictionary(data):
         
         quotes.append(insert_statement) # this is so fuckng dumb
             
-        # Still has same problem... wrong method? Why is there no push method I'm so confused. 
-        # Is the process wrong?????????????????????????????????????????????
+    
 
 if __name__ == "__main__":
     gather_quotes()

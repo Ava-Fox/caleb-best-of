@@ -28,4 +28,4 @@ This is a collection of quotes I found to bring me absolute delight while watchi
 ###### Random tips
 
 ###### Credits:
-    Huge shoutout to Will W. and Charlie Volow for pairing with me on this!
+    Huge shoutout to Will W., Al Sweigart, and Charlie Volow for pairing with me on this!
