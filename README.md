@@ -37,6 +37,13 @@ This is a collection of quotes I found to bring me absolute delight while watchi
 
         - Concatinated string for timestamps? Same link but add &t=?h?m?s
 
+    ###### NEXT STEPS:
+    - [ ] manually adding stuff to db
+    - [ ] add a route that displays data from db
+        - get list of all best moments, and render template that loops over all of them and shows on page
+    - [ ] post route to send data to (adding more moments to db form)
+    - [ ] avafox.net/calebcurrywillyoumarryme
+
 ###### Random tips learned
     - BITCHIN' HOTKEYS 
         - CMD L
@@ -46,6 +53,7 @@ This is a collection of quotes I found to bring me absolute delight while watchi
         - CMD P 
             - Fuzzyfind/ goto
             - put in file name and it will go to and open
+        - git commit --amend --no-edit
     - prettify dictionary output
         - pprint.pprint(quotes)
     - fake tables
@@ -82,7 +90,9 @@ This is a collection of quotes I found to bring me absolute delight while watchi
         - Programmers love this word:
         - comes from math
         - if call it more than once, has same effect as only calling it one time
+
+    
         
 
 ###### Credits:
-    Huge shoutout to Will W., Al Sweigart, Peter Kang, and Charlie Volow for pairing with me on this!
+    Huge shoutout to Will W., Al Sweigart, Peter Kang, Allie Jones, and Charlie Volow for pairing with me on this!
