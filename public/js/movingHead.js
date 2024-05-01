@@ -43,10 +43,8 @@ let ball = element[0];
 
 function moveHead() {
     let ballPos = ball.getBoundingClientRect();
-    console.log(ballPos);
     let topBall = ballPos.top;
     let leftBall = ballPos.left;
-    console.log(ballPos)
     // check to see if collision or no
     checkCollision(ballPos)
 

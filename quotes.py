@@ -119,18 +119,44 @@ def insert_sql(quote_list):
      # {
     #     'author': "", 
     #     'quote': "",
-    #     'isChalk': [bool, bool],
-    #     'isAction': [bool, ""],
+    #     'isChalk': [bool, bool], [Is it about chalk, did he drop it]
+    #     'isAction': [bool, ""], [Is it an action, description]
     #     'timestamp': ""
     #     }
+
+    # Maybe schema fucked up bc no autoincrement
     for current_quote in quote_list:
         author = current_quote["author"]
         quote = current_quote["quote"]
         isChalk = current_quote["isChalk"]
         isAction = current_quote["isAction"]
         timestamp = current_quote["timestamp"]
+        # Determine author:
+            # If it's al:
+                
+        if author == 'al':
+            # Insert quote into quote table, everything else is null, and skip
+            # INSERT INTO table (column1,column2 ,..)
+            # VALUES( value1,	value2 ,...);
+            db.execute("INSERT INTO author (name) VALUES (?);", author)
+            author_id = db.execute("SELECT author_id FROM author WHERE name = ?;", author)
+            author_id = int(author_id['author_id'])
+            db.execute("INSERT INTO quote (quote, is_chalk_instance, is_action, timestamp, author_id) VALUES (?, ?, ?, ?, ?);", quote, isChalk[0], isAction[0], timestamp, author_id)
+            continue
+        # Instert quote into quotes table
+        # If it pertains to chalk
+            # Insert quote_id into chalk table
+            # Create a chalk instance PK
+            # Enter boolean of if dropped
+        # If it's an action
+            # Insert into action table
+            # And insert description
+        # Add timestamp
+
+
 
 
 if __name__ == "__main__":
     gather_quotes()
-    pp.pprint(quotes)
+    insert_sql(quotes)
+    # pp.pprint(quotes)
