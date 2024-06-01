@@ -1,6 +1,6 @@
-from cs50 import SQL
+#from cs50 import SQL
 import pprint as pp
-db = SQL("sqlite:///calebBestOf.db")
+# db = SQL("sqlite:///calebBestOf.db")
 
 # List of all the quotes to insert into db
 quotes = []
@@ -24,10 +24,12 @@ print(prompt)
 def gather_quotes():
     quotes_remaining = True
     while quotes_remaining:
+        dict = []
         current_quote = input("Quote: ")
         if current_quote == "q":
             quotes_remaining = False
             break
+        dict.append(current_quote)
         
         # this is... fucking hilarious
         options = ["y", "n"]
@@ -38,56 +40,67 @@ def gather_quotes():
                     author = "caleb"
                 else:
                     author = "al"
-                break
-        if author == "caleb":
-            while True:
-                is_chalk = input("Does it pertain to chalk? y/n: ")
-                if is_chalk in options:
-                    if is_chalk == "y":
-                        # Gonna be isChalk[0] = True
-                        is_chalk = True
-                        while True:
-                            # Check if it's a dropped instance
-                            dropped = input("Did he drop the chalk? (y/n): ")
-                            if dropped in options:
-                                if dropped == "y":
-                                    # Gonna be like...isChalk[1] = True
-                                    dropped = True
-                                else:
-                                    dropped = False
-                                break 
-                    else:
-                        is_chalk = False
-                        dropped = False
-                    break
+                    al_stats = {
+                        "author": 'al',
+                        "is_chalk": False,
+                        "dropped": False,
+                        "is_action": False,
+                        "description": None,
+                        "timestamp": None
+                        }
+                    for stat in al_stats.values():
+                        dict.append(stat)
+                    continue
+            if author == "caleb":
+                dict.append(author)
+                while True:
+                    is_chalk = input("Does it pertain to chalk? y/n: ")
+                    if is_chalk in options:
+                        if is_chalk == "y":
+                            # Gonna be isChalk[0] = True
+                            is_chalk = True
+                            while True:
+                                # Check if it's a dropped instance
+                                dropped = input("Did he drop the chalk? (y/n): ")
+                                if dropped in options:
+                                    if dropped == "y":
+                                        # Gonna be like...isChalk[1] = True
+                                        dropped = True
+                                    else:
+                                        dropped = False
+                                    break 
+                        else:
+                            is_chalk = False
+                            dropped = False
+                        dict.append(is_chalk)
+                        dict.append(dropped)
+                        break
 
-            while True:
-                is_action = input("Is it an action? (y/n): ")
-                if is_action in options:
-                    if is_action == "y":
-                        is_action = True
-                        description = input("Description of action: ")
-                    else:
-                        is_action = False
-                        description = None
-                    break
+                    while True:
+                        is_action = input("Is it an action? (y/n): ")
+                        if is_action in options:
+                            if is_action == "y":
+                                is_action = True
+                                description = input("Description of action: ")
+                            else:
+                                is_action = False
+                                description = None
+                            dict.append(is_action)
+                            dict.append(description)
+                            break
 
-            while True:
-                has_timestamp = input("Got timestamp? (y/n): ")
-                if has_timestamp in options:
-                    if has_timestamp == "y":
-                        timestamp = input("Insert timestamp: ")
-                    else:
-                        timestamp = None
-                    break
-        else:
-            is_chalk = False
-            dropped = False
-            is_action = False
-            description = None
-            timestamp = None
-
-        insert_dictionary([author, current_quote, is_chalk, dropped, is_action, description, timestamp])
+                while True:
+                    has_timestamp = input("Got timestamp? (y/n): ")
+                    if has_timestamp in options:
+                        if has_timestamp == "y":
+                            timestamp = input("Insert timestamp: ")
+                        else:
+                            timestamp = None
+                        dict.append(timestamp)
+                        break
+        
+            print(dict)
+            # insert_dictionary(dict)
 
 
 def insert_dictionary(data):    
@@ -96,8 +109,8 @@ def insert_dictionary(data):
     Insert quote... bruh is quote even a word anymore????
     Is this legal? This is fucking breaking my brain...
     """
-    author = data[0]
-    current_quote = data[1]
+    current_quote = data[0]
+    author = data[1]
     is_chalk = data[2]
     dropped = data[3]
     is_action = data[4]
@@ -112,6 +125,7 @@ def insert_dictionary(data):
         }
         
     quotes.append(insert_statement) # this is so fuckng dumb
+    print(quotes)
 
 
 def insert_sql(quote_list):
@@ -158,5 +172,5 @@ def insert_sql(quote_list):
 
 if __name__ == "__main__":
     gather_quotes()
-    insert_sql(quotes)
+    # insert_sql(quotes)
     # pp.pprint(quotes)
