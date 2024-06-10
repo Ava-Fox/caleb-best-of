@@ -1,7 +1,9 @@
-#from cs50 import SQL
+from cs50 import SQL
 import pprint as pp
-# db = SQL("sqlite:///calebBestOf.db")
+db = SQL("sqlite:///calebBestOf.db")
 
+authors = db.execute("SELECT * FROM author;")
+print(authors)
 # List of all the quotes to insert into db
 quotes = []
     # {
@@ -42,6 +44,7 @@ def gather_quotes():
                     author = "al"
                     al_stats = {
                         "author": 'al',
+                        "quote": current_quote, 
                         "is_chalk": False,
                         "dropped": False,
                         "is_action": False,
@@ -53,6 +56,7 @@ def gather_quotes():
             if author == "caleb":
                 caleb_stats = {
                         "author": 'caleb',
+                        "quote": current_quote,
                         "is_chalk": False,
                         "dropped": False,
                         "is_action": False,
@@ -111,51 +115,60 @@ def gather_quotes():
 
 def insert_sql(quote_list):
     """We finally puttin this mf into a database"""
-     # {
-    #     'author': "", 
-    #     'quote': "",
-    #     'isChalk': [bool, bool], [Is it about chalk, did he drop it]
-    #     'isAction': [bool, ""], [Is it an action, description]
-    #     'timestamp': ""
-    #     }
+            # caleb_stats = {
+                        # "author": 'caleb',
+                        # "quote": current_quote,
+                        # "is_chalk": False,
+                        # "dropped": False,
+                        # "is_action": False,
+                        # "description": None,
+                        # "timestamp": None
+                        # }
 
     # Maybe schema fucked up bc no autoincrement
     for current_quote in quote_list:
         author = current_quote["author"]
         quote = current_quote["quote"]
-        isChalk = current_quote["isChalk"]
-        isAction = current_quote["isAction"]
+        isChalk = current_quote["is_chalk"]
+        dropped = current_quote["dropped"]
+        isAction = current_quote["is_action"]
+        description = current_quote["description"]
         timestamp = current_quote["timestamp"]
-
-        # current_author = db.execute("SELECT name FROM author WHERE name = ?;", author)
-        # if current_author:
-            
-        # Determine author:
-            # If it's al:
+        
+        print(f"author: {author}\nquote: {quote}\nisChalk: {isChalk}\ndropped:{dropped}\nisAction:{isAction}\ndescription:{description}\ntimestamp: {timestamp}")
+        
+        # Make sure doesn't log empty quote
+        if quote != 'q':
+            ...
+            # current_author = db.execute("SELECT name FROM author WHERE name = ?;", author)
+            # if current_author:
                 
-        if author == 'al':
-            # Insert quote into quote table, everything else is null, and skip
-            # INSERT INTO table (column1,column2 ,..)
-            # VALUES( value1,	value2 ,...);
-            db.execute("INSERT INTO author (name) VALUES (?);", author)
-            author_id = db.execute("SELECT author_id FROM author WHERE name = ?;", author)
-            author_id = int(author_id['author_id'])
-            db.execute("INSERT INTO quote (quote, is_chalk_instance, is_action, timestamp, author_id) VALUES (?, ?, ?, ?, ?);", quote, isChalk[0], isAction[0], timestamp, author_id)
-            continue
-        # Instert quote into quotes table
-        # If it pertains to chalk
-            # Insert quote_id into chalk table
-            # Create a chalk instance PK
-            # Enter boolean of if dropped
-        # If it's an action
-            # Insert into action table
-            # And insert description
-        # Add timestamp
+            # Determine author:
+                # If it's al:
+                    
+            # if author == 'al':
+            #     # Insert quote into quote table, everything else is null, and skip
+            #     # INSERT INTO table (column1,column2 ,..)
+            #     # VALUES( value1,	value2 ,...);
+            #     db.execute("INSERT INTO author (name) VALUES (?);", author)
+            #     author_id = db.execute("SELECT author_id FROM author WHERE name = ?;", author)
+            #     author_id = int(author_id['author_id'])
+            #     db.execute("INSERT INTO quote (quote, is_chalk_instance, is_action, timestamp, author_id) VALUES (?, ?, ?, ?, ?);", quote, isChalk[0], isAction[0], timestamp, author_id)
+            #     continue
+            # Instert quote into quotes table
+            # If it pertains to chalk
+                # Insert quote_id into chalk table
+                # Create a chalk instance PK
+                # Enter boolean of if dropped
+            # If it's an action
+                # Insert into action table
+                # And insert description
+            # Add timestamp
 
 
 
 
 if __name__ == "__main__":
     gather_quotes()
-    # insert_sql(quotes)
-    pp.pprint(quote_list)
+    insert_sql(quote_list)
+    # pp.pprint(quote_list)
