@@ -1,11 +1,14 @@
 import express from 'express'
 import nunjucks from 'nunjucks'
-// import Database from 'better-sqlite3'
+import Database from 'better-sqlite3'
 
 
-// const db = new Database('./posts.db',
-//   { fileMustExist: true }
-// )
+const db = new Database('./calebBestOf.db',
+  { fileMustExist: true }
+)
+
+// const row = db.prepare('SELECT * FROM users WHERE id = ?').get(userId);
+// console.log(row.firstName, row.lastName, row.email);
 
 const app = express()
 app.use(express.urlencoded({ extended: true }))

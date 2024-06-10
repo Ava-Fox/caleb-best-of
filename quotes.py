@@ -21,16 +21,15 @@ prompt = "\n°º¤ø,¸¸,ø¤º°`°º¤ø,¸,ø¤°º¤ø,¸¸,ø¤º°`°º¤
 print(prompt)
 
 #Gathering data...
+quote_list = []
 def gather_quotes():
     quotes_remaining = True
     while quotes_remaining:
-        dict = []
         current_quote = input("Quote: ")
         if current_quote == "q":
             quotes_remaining = False
             break
-        dict.append(current_quote)
-        
+
         # this is... fucking hilarious
         options = ["y", "n"]
         while True:
@@ -38,6 +37,7 @@ def gather_quotes():
             if author in options:
                 if author == "y":
                     author = "caleb"
+    
                 else:
                     author = "al"
                     al_stats = {
@@ -48,85 +48,66 @@ def gather_quotes():
                         "description": None,
                         "timestamp": None
                         }
-                    for stat in al_stats.values():
-                        dict.append(stat)
+                    quote_list.append(al_stats)
                     break
             if author == "caleb":
-                dict.append(author)
+                caleb_stats = {
+                        "author": 'caleb',
+                        "is_chalk": False,
+                        "dropped": False,
+                        "is_action": False,
+                        "description": None,
+                        "timestamp": None
+                        }
                 while True:
                     is_chalk = input("Does it pertain to chalk? y/n: ")
                     if is_chalk in options:
                         if is_chalk == "y":
                             # Gonna be isChalk[0] = True
-                            is_chalk = True
+                            caleb_stats["is_chalk"] = True
                             while True:
                                 # Check if it's a dropped instance
                                 dropped = input("Did he drop the chalk? (y/n): ")
                                 if dropped in options:
                                     if dropped == "y":
                                         # Gonna be like...isChalk[1] = True
-                                        dropped = True
+                                        caleb_stats["dropped"] = True
                                     else:
-                                        dropped = False
+                                        caleb_stats["dropped"] = False
                                     break 
                         else:
-                            is_chalk = False
-                            dropped = False
-                        dict.append(is_chalk)
-                        dict.append(dropped)
+                            caleb_stats["is_chalk"] = False
+                            caleb_stats["dropped"] = False
                         break
-
-                    while True:
-                        is_action = input("Is it an action? (y/n): ")
-                        if is_action in options:
-                            if is_action == "y":
-                                is_action = True
-                                description = input("Description of action: ")
+                    
+                    # See if quote is an action
+                while True:
+                    is_action = input("Is it an action? (y/n): ")
+                    if is_action in options:
+                        if is_action == "y":
+                            caleb_stats["is_action"] = True
+                            description = input("Description of action: ")
+                            if description:
+                                caleb_stats["description"] = description
                             else:
-                                is_action = False
-                                description = None
-                            dict.append(is_action)
-                            dict.append(description)
-                            break
-
+                                caleb_stats["description"] = None
+                        else:
+                            caleb_stats["is_action"] = False    
+                            caleb_stats["description"] = None
+                        break
+                # See if quote has timestamp
                 while True:
                     has_timestamp = input("Got timestamp? (y/n): ")
                     if has_timestamp in options:
                         if has_timestamp == "y":
-                            timestamp = input("Insert timestamp: ")
+                            caleb_stats["timestamp"] = input("Insert timestamp: ")
                         else:
-                            timestamp = None
-                        dict.append(timestamp)
-                        break
-        
-            print(dict)
-            insert_dictionary(dict)
-
-
-def insert_dictionary(data):    
-    """ 
-    Now we insert everything into dictionary
-    Insert quote... bruh is quote even a word anymore????
-    Is this legal? This is fucking breaking my brain...
-    """
-    current_quote = data[0]
-    author = data[1]
-    is_chalk = data[2]
-    dropped = data[3]
-    is_action = data[4]
-    description = data[5]
-    timestamp = data[6]
-    insert_statement = {
-            "author": author,
-            "quote": current_quote,
-            "isChalk": [is_chalk, dropped],
-            "isAction": [is_action, description],
-            "timestamp": timestamp
-        }
-        
-    quotes.append(insert_statement) # this is so fuckng dumb
-    print(quotes)
-
+                            caleb_stats["timestamp"] = None
+                    break
+                
+            quote_list.append(caleb_stats)
+            break
+            
 
 def insert_sql(quote_list):
     """We finally puttin this mf into a database"""
@@ -177,4 +158,4 @@ def insert_sql(quote_list):
 if __name__ == "__main__":
     gather_quotes()
     # insert_sql(quotes)
-    # pp.pprint(quotes)
+    pp.pprint(quote_list)

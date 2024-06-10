@@ -39,8 +39,8 @@ This is a collection of quotes I found to bring me absolute delight while watchi
 
     - [x] "Caleb is Baeleb"
 
-    ###### NEXT STEPS:
-    - [ ] set up ssh on new computer
+    ##### NEXT STEPS:
+    - [x ] set up ssh on new computer
     - [ ] manually adding stuff to db
     - [ ] add a route that displays data from db
         - get list of all best moments, and render template that loops over all of them and shows on page
@@ -101,6 +101,8 @@ This is a collection of quotes I found to bring me absolute delight while watchi
     - all npm projects run npm install
     - blah blah blah
     - ssh test pt 2
+
+    https://www.npmjs.com/package/better-sqlite3
 
     
         
