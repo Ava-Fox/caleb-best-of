@@ -50,7 +50,7 @@ def gather_quotes():
                         }
                     for stat in al_stats.values():
                         dict.append(stat)
-                    continue
+                    break
             if author == "caleb":
                 dict.append(author)
                 while True:
@@ -100,7 +100,7 @@ def gather_quotes():
                         break
         
             print(dict)
-            # insert_dictionary(dict)
+            insert_dictionary(dict)
 
 
 def insert_dictionary(data):    
@@ -145,6 +145,10 @@ def insert_sql(quote_list):
         isChalk = current_quote["isChalk"]
         isAction = current_quote["isAction"]
         timestamp = current_quote["timestamp"]
+
+        # current_author = db.execute("SELECT name FROM author WHERE name = ?;", author)
+        # if current_author:
+            
         # Determine author:
             # If it's al:
                 

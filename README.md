@@ -37,9 +37,10 @@ This is a collection of quotes I found to bring me absolute delight while watchi
 
         - Concatinated string for timestamps? Same link but add &t=?h?m?s
 
-    - [ ] "Caleb is Baeleb"
+    - [x] "Caleb is Baeleb"
 
     ###### NEXT STEPS:
+    - [ ] set up ssh on new computer
     - [ ] manually adding stuff to db
     - [ ] add a route that displays data from db
         - get list of all best moments, and render template that loops over all of them and shows on page
@@ -92,6 +93,12 @@ This is a collection of quotes I found to bring me absolute delight while watchi
         - Programmers love this word:
         - comes from math
         - if call it more than once, has same effect as only calling it one time
+
+    - NPX temporary
+    - npm run dev
+        - comes with node so can use other ppls code
+        - shortcut
+    - all npm projects run npm install
 
     
         
