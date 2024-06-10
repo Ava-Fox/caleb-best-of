@@ -100,6 +100,7 @@ This is a collection of quotes I found to bring me absolute delight while watchi
         - shortcut
     - all npm projects run npm install
     - blah blah blah
+    - ssh test pt 2
 
     
         
