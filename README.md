@@ -4,7 +4,7 @@ This is a collection of quotes I found to bring me absolute delight while watchi
 
 ##### NEXT STEPS:
     - [x] set up ssh on new computer
-    - [ ] manually adding stuff to db
+    - [x] manually adding stuff to db
     - [ ] add a route that displays data from db
         - get list of all best moments, and render template that loops over all of them and shows on page
     - [ ] post route to send data to (adding more moments to db form)
@@ -14,6 +14,9 @@ This is a collection of quotes I found to bring me absolute delight while watchi
     - [x] Created an automatic virtual env while downloading cs50 library and now can't access or open it because I don't know the name
         - Just created new one called calebEnv
             - still not entering into db though
+    - [ ] Does being in a virtual environment and shifting
+          files around screw with the npx serve dev ? Now 
+          it says safari can't connect with the server??
 
 ###### Ideas:
     - [x] Bouncing head lol
