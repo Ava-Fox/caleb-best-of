@@ -1,4 +1,3 @@
-import cs50
 from cs50 import SQL
 import pprint as pp
 db = SQL("sqlite:///calebBestOf.db")
@@ -128,24 +127,32 @@ def insert_sql(quote_list):
         print(f"author: {author}\nquote: {quote}\nisChalk: {isChalk}\ndropped:{dropped}\nisAction:{isAction}\ndescription:{description}\ntimestamp: {timestamp}")
         
         # Make sure doesn't log empty quote
-        if quote != 'q':
+        if current_quote != 'q':
+            print("inside loop")
             options = ['al', 'caleb']
             current_author = db.execute("SELECT name FROM author WHERE name = ?;", author)
             # Make sure it has a valid author
+            print(f"current author: {current_author}\n")
+            current_author = current_author[0]['name']
+            print(current_author + "\n")
             if current_author in options:
+                print("INSIDE CURRENT AUTHOR IN OPTIONS LOOP")
                 author_id = db.execute("SELECT author_id FROM author WHERE name = ?;", author)
+                author_id = author_id[0]['author_id']
+                print(author_id)
                 # Enter into quotes table
-                db.execute(
-                    """INSERT INTO quote (author_id, quote, is_chalk_instance, is_action, timestamp) 
-                    VALUES (?, ?, ?, ?, ?)""", author_id, quote, isChalk, isAction, timestamp
-                    )
+                db.execute("INSERT INTO quote (author_id, quote, is_chalk_instance, is_action, timestamp) VALUES (?, ?, ?, ?, ?)""", author_id, quote, isChalk, isAction, timestamp)
                 quote_id = db.execute("SELECT quote_id FROM quote WHERE quote = ?;", quote)
+                quote_id = quote_id[0]['quote_id']
+                check = db.execute("SELECT * FROM quote WHERE quote_id = ?", quote_id)
+                print(check)
                 if isChalk:
                     db.execute("INSERT INTO chalk (quote_id, is_dropped) VALUES (?, ?);", quote_id, dropped)
 
                 if isAction:
                     db.execute("INSERT INTO action (quote_id, description) VALUES (?, ?);", quote_id, description)
-                
+        else:
+            break
 if __name__ == "__main__":
     gather_quotes()
     insert_sql(quote_list)

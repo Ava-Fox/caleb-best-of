@@ -2,6 +2,19 @@
 
 This is a collection of quotes I found to bring me absolute delight while watching [Caleb Curry's 8 hour compilation video series on database design](https://www.youtube.com/watch?v=h0j0QN2b57M&t=0h0m0s). I thought it proper to just store it in a database itself. I'd been casually collecting these quotes while following along, and got the idea to create a database 7 hours in, so timestamps are only available for quotes collected during the last hour. I highly reccomend just clicking through for a good laugh. Caleb, if you're watching this: please marry me I love you 💕
 
+##### NEXT STEPS:
+    - [x] set up ssh on new computer
+    - [ ] manually adding stuff to db
+    - [ ] add a route that displays data from db
+        - get list of all best moments, and render template that loops over all of them and shows on page
+    - [ ] post route to send data to (adding more moments to db form)
+    - [ ] avafox.net/calebcurrywillyoumarryme
+
+###### Problems
+    - [x] Created an automatic virtual env while downloading cs50 library and now can't access or open it because I don't know the name
+        - Just created new one called calebEnv
+            - still not entering into db though
+
 ###### Ideas:
     - [x] Bouncing head lol
     - [ ] Create a password login for something only he would know and upon entry I give him my contact info and social security number (for the marriage contract)
@@ -38,14 +51,6 @@ This is a collection of quotes I found to bring me absolute delight while watchi
         - Concatinated string for timestamps? Same link but add &t=?h?m?s
 
     - [x] "Caleb is Baeleb"
-
-    ##### NEXT STEPS:
-    - [x ] set up ssh on new computer
-    - [ ] manually adding stuff to db
-    - [ ] add a route that displays data from db
-        - get list of all best moments, and render template that loops over all of them and shows on page
-    - [ ] post route to send data to (adding more moments to db form)
-    - [ ] avafox.net/calebcurrywillyoumarryme
 
 ###### Random tips learned
     - BITCHIN' HOTKEYS 
@@ -99,9 +104,7 @@ This is a collection of quotes I found to bring me absolute delight while watchi
         - comes with node so can use other ppls code
         - shortcut
     - all npm projects run npm install
-    - blah blah blah
-    - ssh test pt 2
-
+    - CREATED VIRTUAL ENVIRONMENT calebEnv TO INSTALL CS50 TOOLS
     https://www.npmjs.com/package/better-sqlite3
 
     
