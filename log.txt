@@ -30,3 +30,11 @@ CREATE TABLE author (
     name TEXT NOT NULL,
     PRIMARY KEY (author_id)
 );
+
+
+Get all quotes:
+
+Dropped chalk quotes:
+SELECT quote FROM quotes WHERE quote_id IN (SELECT quote_id FROM chalk WHILE is_dropped = 1;)
+
+Video clips

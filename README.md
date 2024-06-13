@@ -122,6 +122,8 @@ This is a collection of quotes I found to bring me absolute delight while watchi
     - CREATED VIRTUAL ENVIRONMENT calebEnv TO INSTALL CS50 TOOLS
     https://www.npmjs.com/package/better-sqlite3
 
+    SQLITE: .mode table
+
     
         
 

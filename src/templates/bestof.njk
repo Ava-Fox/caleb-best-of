@@ -29,6 +29,12 @@
                 
             </nav>
             </form>
+        <div>
+        <ul>
+         {%for quote in quotes %}
+           <li> {{quote}}</li>
+         {%endfor%}
+        </ul>
         </div>
         
         <script src="js/movinghead.js"></script>

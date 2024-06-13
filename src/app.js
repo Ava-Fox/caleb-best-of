@@ -1,3 +1,4 @@
+// wont run in browser
 import express from 'express'
 import nunjucks from 'nunjucks'
 import Database from 'better-sqlite3'
@@ -23,12 +24,15 @@ app.get('/', (_req, res) => {
   // res = response (resp)
   // _req = request
   // express convention
-  const quotes = db.prepare("SELECT quote_id, quote FROM quote;");
-  quotes.run;
-  console.log(quotes.quote_id, quotes.quote);
+  const quotes = db.prepare("SELECT quote_id, quote FROM quote;").all();
+  let onlyQuotes = []
+  for (let i = 0; i < quotes.length; i++){
+    onlyQuotes.push(quotes[i].quote)
+  }
+
   console.log(quotes);
   console.log("Hi");
-  res.render('bestof.njk');
+  res.render('bestof.njk', {quotes: onlyQuotes});
 })
 
 // quote page
