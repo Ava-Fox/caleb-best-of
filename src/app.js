@@ -6,12 +6,9 @@ import Database from 'better-sqlite3'
 const db = new Database('./calebBestOf.db',
   { fileMustExist: true }
 )
-db.pragma('journal_mode = WAL');
-
-// set the WAL pragma for performance reasons.
-const quotes = db.prepare("SELECT quote_id, quote FROM quote;")
-quotes.run
-console.log(quotes.quote_id, quotes.quote)
+const row = db.prepare("SELECT * FROM quote WHERE author_id = ?")
+const info = row.run(2)
+console.log(info)
 // const row = db.prepare('SELECT * FROM users WHERE id = ?').get(userId);
 // console.log(row.firstName, row.lastName, row.email);
 
@@ -26,7 +23,12 @@ app.get('/', (_req, res) => {
   // res = response (resp)
   // _req = request
   // express convention
-  res.render('bestof.njk')
+  const quotes = db.prepare("SELECT quote_id, quote FROM quote;");
+  quotes.run;
+  console.log(quotes.quote_id, quotes.quote);
+  console.log(quotes);
+  console.log("Hi");
+  res.render('bestof.njk');
 })
 
 // quote page
