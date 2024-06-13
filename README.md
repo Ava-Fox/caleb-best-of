@@ -14,9 +14,21 @@ This is a collection of quotes I found to bring me absolute delight while watchi
     - [x] Created an automatic virtual env while downloading cs50 library and now can't access or open it because I don't know the name
         - Just created new one called calebEnv
             - still not entering into db though
-    - [ ] Does being in a virtual environment and shifting
+    - [x] Does being in a virtual environment and shifting
           files around screw with the npx serve dev ? Now 
           it says safari can't connect with the server??
+
+        HTTP  6/12/2024 1:27:54 PM ::1 GET /
+        HTTP  6/12/2024 1:27:54 PM ::1 Returned 404 in 15 ms
+
+        - can't quit the environment now: permissions denied
+
+        - tried giving terminal full access to disk but no cigar.
+        - Did moving files around mess it completely up?
+        - can't find the src files when I go to run it
+        - Like it can't even find the current directory
+
+        * WAS RUNNING WRONG COMMAND: NPX SERVE RATHER THAN: NPM SERVE GOLLY JEEZ
 
 ###### Ideas:
     - [x] Bouncing head lol
