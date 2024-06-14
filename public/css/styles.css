@@ -9,12 +9,15 @@ button {
     background-color: peachpuff;
     margin-top: 20px;
     text-align: top;
+    transition: all 2s;
 }
 button:hover {
     cursor: pointer;
     background-color: aquamarine;
     width: 70px;
     height: 40px;
+    
+
 }
 
 #caleb-sword{

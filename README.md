@@ -9,6 +9,7 @@ This is a collection of quotes I found to bring me absolute delight while watchi
         - get list of all best moments, and render template that loops over all of them and shows on page
     - [ ] post route to send data to (adding more moments to db form)
     - [ ] avafox.net/calebcurrywillyoumarryme
+    - [ ] initial page load get all author names/id
 
 ###### Problems
     - [x] Created an automatic virtual env while downloading cs50 library and now can't access or open it because I don't know the name

@@ -24,6 +24,8 @@ app.get('/', (_req, res) => {
   // res = response (resp)
   // _req = request
   // express convention
+
+  // if action == "post", see which button clicked then send author options/quote data for specific set
   const quotes = db.prepare("SELECT quote_id, quote FROM quote;").all();
   let onlyQuotes = []
   for (let i = 0; i < quotes.length; i++){
@@ -36,12 +38,21 @@ app.get('/', (_req, res) => {
 })
 
 // quote page
-app.get('/quotes', (_req, res) => {
+app.get('/quotes', (req, res) => {
   // When click on quote in sidebar, takes 
   // to this page with quote_id from button clicked
   // and if it has a video it displays video, if not
   // just renders quote
-  res.render("quotes.njk")
+  const authors = db.prepare("SELECT name, author_id FROM author;").all()
+  const authorId = req.query.author_id
+  let quotes = []
+  if (authorId){
+    quotes = db.prepare("SELECT quote FROM quote WHERE author_id = ?;").all(authorId);
+  }
+  res.render("quotes.njk", {authors, quotes}) // if name of key/object matches variable can just do once
+
+  // localhost:3000/quotes
+  // localhost:3000/quotes?author_id=1
 })
 
 console.log('now listening on http://localhost:3000')
