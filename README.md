@@ -5,7 +5,7 @@ This is a collection of quotes I found to bring me absolute delight while watchi
 ##### NEXT STEPS:
     - [x] set up ssh on new computer
     - [x] manually adding stuff to db
-    - [ ] add a route that displays data from db
+    - [x] add a route that displays data from db
         - get list of all best moments, and render template that loops over all of them and shows on page
     - [ ] post route to send data to (adding more moments to db form)
     - [ ] avafox.net/calebcurrywillyoumarryme

@@ -7,10 +7,14 @@ button {
     width: 50px;
     height: 20px;
     background-color: peachpuff;
+    margin-top: 20px;
+    text-align: top;
 }
 button:hover {
     cursor: pointer;
     background-color: aquamarine;
+    width: 70px;
+    height: 40px;
 }
 
 #caleb-sword{
@@ -67,4 +71,8 @@ form {
     height: 500px; 
     margin-top: 10px;  
     background-color: pink
+}
+
+#author-buttons {
+    list-style-type: none;
 }
