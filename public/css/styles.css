@@ -26,6 +26,10 @@ button:hover {
     background-color: bisque;
 }
 
+.flex-container {
+    display: flex;
+    flex-direction: row;
+}
 
 h1 {
     text-align: center;

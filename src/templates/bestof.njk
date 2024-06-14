@@ -17,26 +17,30 @@
                 <div>🌹🌹🌹🌹</div>
             </div>
         </div>
-        <div>
-            <form style="">
-            <nav>
-                <ul> <h3>Author</h3> 
-                    <li> <button>Caleb</button> </li>
-                    <h3>Special Mention:</h3>
-                    <li> <button>Al</button> </li>
-                </ul>
-                <img src="images/sword.png" alt="Caleb holding a sword" id="caleb-sword">
-                
-            </nav>
+
+            <div class="flex-container">
+            <form>
+                <nav>
+                    <ul> <h3>Author</h3> 
+                        <li> <button>Caleb</button> </li>
+                        <h3>Special Mention:</h3>
+                        <li> <button>Al</button> </li>
+                    </ul>
+                    <img src="images/sword.png" alt="Caleb holding a sword" id="caleb-sword">
+                    
+                </nav>
             </form>
-        <div>
-        <ul>
-         {%for quote in quotes %}
-           <li> {{quote}}</li>
-         {%endfor%}
-        </ul>
-        </div>
+            
+            <ul style="margin-left: 200px;">
+                <h6>All quotes:</h6>
+                {%for quote in quotes %}
+                <li> {{quote}}</li>
+                {%endfor%}
+             </ul>
+            
+            </div>
+
         
-        <script src="js/movinghead.js"></script>
+    <script src="js/movinghead.js"></script>
     </body>
 </html>
