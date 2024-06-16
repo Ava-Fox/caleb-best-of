@@ -1,3 +1,20 @@
+a {
+    width: 50px;
+    height: 20px;
+    background-color: peachpuff;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: top;
+    transition: all 2s;
+}
+
+a:hover {
+    cursor: pointer;
+    background-color: aquamarine;
+    width: 70px;
+    height: 40px;
+    
+}
 body {
     background-color: lightblue;
     margin: 20px;

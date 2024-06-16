@@ -34,7 +34,11 @@
             <ul style="margin-left: 200px;">
                 <h6>All quotes:</h6>
                 {%for quote in quotes %}
-                <li> {{quote}}</li>
+                    {% if quote.link%}
+                        <li><a src={{quote.link}}> {{quote.quote}}</a></li>
+                    {% else %}
+                        <li>{{quote.quote}}</li>
+                    {%endif%}
                 {%endfor%}
              </ul>
             

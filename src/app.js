@@ -26,14 +26,17 @@ app.get('/', (_req, res) => {
   // express convention
 
   // if action == "post", see which button clicked then send author options/quote data for specific set
-  const quotes = db.prepare("SELECT quote_id, quote FROM quote;").all();
+  const quotes = db.prepare("SELECT quote_id, quote, timestamp FROM quote;").all();
   let onlyQuotes = []
   for (let i = 0; i < quotes.length; i++){
-    onlyQuotes.push(quotes[i].quote)
+    let timestamp = "0h0m0s"
+    let link = 'https://www.youtube.com/watch?v=h0j0QN2b57M&t='
+    if (quotes[i].timestamp) {
+      timestamp = quotes[i].timestamp;
+    }
+    link += timestamp;
+    onlyQuotes.push({quote: quotes[i].quote, link})
   }
-
-  console.log(quotes);
-  console.log("Hi");
   res.render('bestof.njk', {quotes: onlyQuotes});
 })
 

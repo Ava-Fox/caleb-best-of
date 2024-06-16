@@ -38,3 +38,15 @@ Dropped chalk quotes:
 SELECT quote FROM quotes WHERE quote_id IN (SELECT quote_id FROM chalk WHILE is_dropped = 1;)
 
 Video clips
+
+6/16/24:
+    Attempted to insert embedded video for each quote with a timestamp.
+    Was able to include links to the beginning of video but not at specific time.
+    Tried setting each quote as a link to seperate youtube video except video did 
+    not open when clicked. 
+    
+    Future:
+        Linked only the videos with timestamp
+        When author button pressed, menue of different options shows up
+        pertaining to the quote topic (chalk, video).
+        Added form to easily insert in database new authors and quotes.
