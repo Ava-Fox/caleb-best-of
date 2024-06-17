@@ -20,39 +20,6 @@ app.use(express.static('public'))
 nunjucks.configure('./src/templates', { express: app })
 
 // home page
-// app.get('/', (_req, res) => {
-//   // res = response (resp)
-//   // _req = request
-//   // express convention
-
-//   const quotes = db.prepare("SELECT quote_id, quote, timestamp FROM quote;").all();
-//   let onlyQuotes = []
-//   for (let i = 0; i < quotes.length; i++){
-//     let timestamp = "0h0m0s"
-//     let link = 'https://www.youtube.com/watch?v=h0j0QN2b57M&t='
-//     if (quotes[i].timestamp) {
-//       timestamp = quotes[i].timestamp;
-//     }
-//     link += timestamp;
-//     onlyQuotes.push({quote: quotes[i].quote, link})
-//   }
-//   res.render('bestof.njk', {quotes: onlyQuotes});
-// })
-//   const quotes = db.prepare("SELECT quote_id, quote, timestamp FROM quote;").all();
-//   let onlyQuotes = []
-//   for (let i = 0; i < quotes.length; i++){
-//     let timestamp = "0h0m0s"
-//     let link = 'https://www.youtube.com/watch?v=h0j0QN2b57M&t='
-//     if (quotes[i].timestamp) {
-//       timestamp = quotes[i].timestamp;
-//     }
-//     link += timestamp;
-//     onlyQuotes.push({quote: quotes[i].quote, link})
-//   }
-//   res.render('bestof.njk', {quotes: onlyQuotes});
-// })
-
-// quote page
 app.get('/', (req, res) => {
   // When click on quote in sidebar, takes 
   // to this page with quote_id from button clicked
@@ -63,7 +30,6 @@ app.get('/', (req, res) => {
   let quotes = []
   if (authorId){
     quotes = db.prepare("SELECT quote, clip  FROM quote WHERE author_id = ?;").all(authorId);
-    console.log(quotes)
   }
   res.render("quotes.njk", {authors, quotes}) // if name of key/object matches variable can just do once
 
@@ -71,5 +37,21 @@ app.get('/', (req, res) => {
   // localhost:3000/quotes?author_id=1
 })
 
+app.get('/videos', (req,res) => {
+  const authors = db.prepare("SELECT author_id, name FROM author;").all()
+  let authorId;
+  for (let i = 0; i < authors.length; i++){
+    if (authors[i].name === 'caleb') {
+      authorId = authors[i]['author_id']
+    }
+  }
+  console.log(authorId)
+  let videos = []
+  if (authorId){
+    videos = db.prepare("SELECT clip FROM quote WHERE author_id = ?;").all(authorId);
+    console.log(videos);
+  }
+  res.render("videos.njk", {authors, videos})
+})
 console.log('now listening on http://localhost:3000')
 app.listen(3000)

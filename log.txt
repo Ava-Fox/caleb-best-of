@@ -46,7 +46,7 @@ Video clips
     not open when clicked. 
 
     Future:
-        Linked only the videos with timestamp
+        
         
         When author button pressed, menue of different options shows up
         pertaining to the quote topic (chalk, video).
@@ -54,3 +54,7 @@ Video clips
         Added form to easily insert in database new authors and quotes.
         
         Front page /quotes functionality
+
+6/17/24
+    Created youtube clips from all of the moments with timestamps. Only the videos
+    with timestamps have these links. 
