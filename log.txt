@@ -58,3 +58,8 @@ Video clips
 6/17/24
     Created youtube clips from all of the moments with timestamps. Only the videos
     with timestamps have these links. 
+    Listed moment types underneath caleb link. Added another route to page where 
+    only the video clips are shown.
+    Made a template file layout.njk and utilized it for videos.njk
+    The homepage is now what was originally /quotes, where it prompts user to 
+    select an author before it demonstrates each quote.

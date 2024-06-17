@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Caleb Curry's Best Moments</title>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+        <h1> Caleb is Baeleb </h1>
+        <div class="content">
+            hey
+        </div>
+        <div class="sexy">
+            <img id="head" src="images/caleb.png">
+            <div  class="marry-me">            
+                <div >🌹🌹🌹🌹</div>
+                <div>maary me</div>
+                <div>🌹🌹🌹🌹</div>
+            </div>
+        </div>
+
+            <div class="flex-container">
+            <form action="post">
+                <nav>
+                    <ul id="author-buttons">
+                        <h3>Author</h3> 
+                       
+                        {% for author in authors%}
+                            <li><a href="/?author_id={{author.author_id}}">{{author.name}}</a><li>
+                            {%if author.name == "caleb" %}
+                                <ul>
+                                    <li> All quotes </li>
+                                    <li> Chalk </li>
+                                    <li><a href="/videos"> Video </a></li>
+                                </ul>
+                            {%endif%}
+                        {% endfor %}
+                        
+                    </ul>
+                    <img src="images/sword.png" alt="Caleb holding a sword" id="caleb-sword">
+                    
+                </nav>
+            </form>
+            
+            <ul style="margin-left: 200px;">
+                <h6>All quotes:</h6>
+                {% if quotes|length %}
+                    {%for quote in quotes %}
+                    <li> {{quote.quote}}</li>
+                        {%if quote.clip%}
+                        <iframe width="560" height="315" src="{{quote.clip}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        {%endif%}
+                    {%endfor%}
+                {%else%}
+                    <p>Select an author</p>
+                {%endif%}
+             </ul>
+            
+            </div>
+
+        
+    <script src="js/movinghead.js"></script>
+    </body>
+</html>

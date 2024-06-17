@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Caleb Curry's Best Moments</title>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+         <h1> Caleb is Baeleb </h1>
+        <div class="content">
+            hey
+        </div>
+        <div class="sexy">
+            <img id="head" src="images/caleb.png">
+            <div  class="marry-me">            
+                <div >🌹🌹🌹🌹</div>
+                <div>maary me</div>
+                <div>🌹🌹🌹🌹</div>
+            </div>
+        </div>
+        <div class="flex-container">
+            <form action="post">
+                <nav>
+                    <ul id="author-buttons">
+                        <h3>Author</h3> 
+                       
+                        {% for author in authors%}
+                            <li><a href="/?author_id={{author.author_id}}">{{author.name}}</a><li>
+                            {%if author.name == "caleb" %}
+                                <ul>
+                                    <li> All quotes </li>
+                                    <li> Chalk </li>
+                                    <li><a href="/videos"> Video </a></li>
+                                </ul>
+                            {%endif%}
+                        {% endfor %}
+                        
+                    </ul>
+                    <img src="images/sword.png" alt="Caleb holding a sword" id="caleb-sword">
+                    
+                </nav>
+            </form>
+            
+        {% block main %}{%endblock%}
+        <script src="js/movinghead.js"></script>
+    </body>
+</html>
