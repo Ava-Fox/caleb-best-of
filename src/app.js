@@ -20,28 +20,40 @@ app.use(express.static('public'))
 nunjucks.configure('./src/templates', { express: app })
 
 // home page
-app.get('/', (_req, res) => {
-  // res = response (resp)
-  // _req = request
-  // express convention
+// app.get('/', (_req, res) => {
+//   // res = response (resp)
+//   // _req = request
+//   // express convention
 
-  // if action == "post", see which button clicked then send author options/quote data for specific set
-  const quotes = db.prepare("SELECT quote_id, quote, timestamp FROM quote;").all();
-  let onlyQuotes = []
-  for (let i = 0; i < quotes.length; i++){
-    let timestamp = "0h0m0s"
-    let link = 'https://www.youtube.com/watch?v=h0j0QN2b57M&t='
-    if (quotes[i].timestamp) {
-      timestamp = quotes[i].timestamp;
-    }
-    link += timestamp;
-    onlyQuotes.push({quote: quotes[i].quote, link})
-  }
-  res.render('bestof.njk', {quotes: onlyQuotes});
-})
+//   const quotes = db.prepare("SELECT quote_id, quote, timestamp FROM quote;").all();
+//   let onlyQuotes = []
+//   for (let i = 0; i < quotes.length; i++){
+//     let timestamp = "0h0m0s"
+//     let link = 'https://www.youtube.com/watch?v=h0j0QN2b57M&t='
+//     if (quotes[i].timestamp) {
+//       timestamp = quotes[i].timestamp;
+//     }
+//     link += timestamp;
+//     onlyQuotes.push({quote: quotes[i].quote, link})
+//   }
+//   res.render('bestof.njk', {quotes: onlyQuotes});
+// })
+//   const quotes = db.prepare("SELECT quote_id, quote, timestamp FROM quote;").all();
+//   let onlyQuotes = []
+//   for (let i = 0; i < quotes.length; i++){
+//     let timestamp = "0h0m0s"
+//     let link = 'https://www.youtube.com/watch?v=h0j0QN2b57M&t='
+//     if (quotes[i].timestamp) {
+//       timestamp = quotes[i].timestamp;
+//     }
+//     link += timestamp;
+//     onlyQuotes.push({quote: quotes[i].quote, link})
+//   }
+//   res.render('bestof.njk', {quotes: onlyQuotes});
+// })
 
 // quote page
-app.get('/quotes', (req, res) => {
+app.get('/', (req, res) => {
   // When click on quote in sidebar, takes 
   // to this page with quote_id from button clicked
   // and if it has a video it displays video, if not
@@ -50,7 +62,8 @@ app.get('/quotes', (req, res) => {
   const authorId = req.query.author_id
   let quotes = []
   if (authorId){
-    quotes = db.prepare("SELECT quote FROM quote WHERE author_id = ?;").all(authorId);
+    quotes = db.prepare("SELECT quote, clip  FROM quote WHERE author_id = ?;").all(authorId);
+    console.log(quotes)
   }
   res.render("quotes.njk", {authors, quotes}) // if name of key/object matches variable can just do once
 

@@ -44,9 +44,13 @@ Video clips
     Was able to include links to the beginning of video but not at specific time.
     Tried setting each quote as a link to seperate youtube video except video did 
     not open when clicked. 
-    
+
     Future:
         Linked only the videos with timestamp
+        
         When author button pressed, menue of different options shows up
         pertaining to the quote topic (chalk, video).
+        
         Added form to easily insert in database new authors and quotes.
+        
+        Front page /quotes functionality
