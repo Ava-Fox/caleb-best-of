@@ -68,5 +68,14 @@ app.get('/chalk', (_req, res) => {
   }
   res.render("chalk.njk", {authors, quotes})
 })
+
+app.get("/add", (req, res) => {
+  res.render("add.njk");
+})
+
+app.post("/add", (req, res) => {
+  res.send("Got a post request")
+})
+
 console.log('now listening on http://localhost:3000')
 app.listen(3000)

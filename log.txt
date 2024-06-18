@@ -52,8 +52,6 @@ Video clips
         pertaining to the quote topic (chalk, video).
         
         Added form to easily insert in database new authors and quotes.
-        
-        Front page /quotes functionality
 
 6/17/24
     Created youtube clips from all of the moments with timestamps. Only the videos
@@ -63,3 +61,8 @@ Video clips
     Made a template file layout.njk and utilized it for videos.njk
     The homepage is now what was originally /quotes, where it prompts user to 
     select an author before it demonstrates each quote.
+
+6/18/24
+    Formatted templates so they extend one main layout file. Added an "Add" section to 
+    navbar. Made separate chalk/video sections that display only the quotes that have
+    a video or only the ones pertaining to chalk. 
