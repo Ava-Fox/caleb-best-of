@@ -1,0 +1,9 @@
+{% extends "layout.njk" %}
+{% block main %}
+<h1> All quotes pertaining to chalk: </h1>
+<ul style="margin-left: 500px;">
+    {% for quote in quotes %}
+    <li>{{quote.quote}}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

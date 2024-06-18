@@ -4,6 +4,7 @@
         <title>Caleb Curry's Best Moments</title>
         <link rel="stylesheet" href="css/styles.css">
     </head>
+    
     <body>
          <h1> Caleb is Baeleb </h1>
         <div class="content">
@@ -27,20 +28,19 @@
                             <li><a href="/?author_id={{author.author_id}}">{{author.name}}</a><li>
                             {%if author.name == "caleb" %}
                                 <ul>
-                                    <li> All quotes </li>
-                                    <li> Chalk </li>
+                                    <li><a href="/chalk"> Chalk </a> </li>
                                     <li><a href="/videos"> Video </a></li>
                                 </ul>
                             {%endif%}
                         {% endfor %}
-                        
+                        <li>Add</li>
                     </ul>
                     <img src="images/sword.png" alt="Caleb holding a sword" id="caleb-sword">
                     
                 </nav>
-            </form>
-            
+            </form>    
         {% block main %}{%endblock%}
+        </div>
         <script src="js/movinghead.js"></script>
     </body>
 </html>

@@ -48,10 +48,25 @@ app.get('/videos', (req,res) => {
   console.log(authorId)
   let videos = []
   if (authorId){
-    videos = db.prepare("SELECT clip FROM quote WHERE author_id = ?;").all(authorId);
+    videos = db.prepare("SELECT clip, quote FROM quote WHERE author_id = ?;").all(authorId);
     console.log(videos);
   }
   res.render("videos.njk", {authors, videos})
+})
+
+app.get('/chalk', (_req, res) => {
+  const authors = db.prepare("SELECT author_id, name FROM author;").all()
+  let authorId;
+  for (let i = 0; i < authors.length; i++){
+    if (authors[i].name === 'caleb') {
+      authorId = authors[i]['author_id']
+    }
+  }
+  let quotes = [];
+  if (authorId) {
+    quotes = db.prepare("SELECT quote FROM quote JOIN chalk ON chalk.quote_id = quote.quote_id WHERE author_id = ?;").all(authorId)
+  }
+  res.render("chalk.njk", {authors, quotes})
 })
 console.log('now listening on http://localhost:3000')
 app.listen(3000)

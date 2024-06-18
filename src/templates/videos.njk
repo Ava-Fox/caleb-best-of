@@ -4,7 +4,8 @@
     <div id="video-list">
     {%for video in videos %}
         {% if video.clip %}
-        <iframe width="560" height="315" src="{{video.clip}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <p> {{video.quote}} </p>
+        <iframe class="video-list" width="560" height="315" src="{{video.clip}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         {% endif %}
     {%endfor%}
     </div>

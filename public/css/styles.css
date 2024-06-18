@@ -12,12 +12,13 @@ a:hover {
     cursor: pointer;
     background-color: aquamarine;
     width: 70px;
-    height: 40px;
-    
+    height: 40px;    
 }
 body {
     background-color: lightblue;
     margin: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    background-image: url("/images/flower.png");
     /* cursor: url("sword.png"), auto; */
 }
 button {
@@ -95,4 +96,9 @@ form {
 
 #author-buttons {
     list-style-type: none;
+    background-color: none;
+}
+
+.video-list {
+    margin: 10px;
 }
