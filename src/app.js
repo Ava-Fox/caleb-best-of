@@ -83,16 +83,31 @@ app.post("/add", (req, res) => {
   console.log(authors)
 
   const body = req.body
-  const author = body.author
+  const author = body.author.toLowerCase()
   const quote = body.quote
+  let action = body.action
+  let chalk = body.chalk
   const clip = body.clip
+
+  if (action === "y") {
+    action = 1
+  }
+  else {
+    action = 0
+  }
+
+  if (chalk === "y") {
+    chalk = 1
+  }
+  else {
+    chalk = 0
+  }
   // GET AUTHOR ID
   let authorId;
   for (let i = 0; i < authors.length; i++){
     if (authors[i]['name'] === author) {
       authorId = authors[i]["author_id"]
     }
-    console.log(authors[i]['name'])
   }
 
   if (!authorId) {
@@ -101,10 +116,10 @@ app.post("/add", (req, res) => {
     authorId = db.prepare("SELECT author_id FROM author WHERE name = ?;").run(author)
   }
   // INSERT QUOTE INTO DATABASE
-  db.prepare("INSERT INTO quote (author_id, quote, clip) VALUES (?, ?, ?);").run(authorId, quote, clip)
-  console.log(author, authorId)
-  res.send("Got a post request")
-  const statement = db.prepare(`INSERT INTO author (name) VALUES (?);`)
+  db.prepare("INSERT INTO quote (author_id, quote, is_chalk_instance, is_action, clip) VALUES (?, ?, ?, ?, ?);").run(authorId, quote, chalk, action, clip)
+
+  res.header("Location", `/?author_id=${authorId}`)
+  res.sendStatus(303)
 })
 
 console.log('now listening on http://localhost:3000')
