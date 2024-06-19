@@ -14,16 +14,23 @@ a:hover {
     width: 70px;
     height: 40px;    
 }
+
+#add {
+    width: 500px;
+    height: 500px;
+    text-align: center;
+}
 body {
     background-color: lightblue;
     margin: 20px;
     font-family: 'Times New Roman', Times, serif;
+    font-size: xx-large;
     background-image: url("/images/flower.png");
     /* cursor: url("sword.png"), auto; */
 }
 button {
-    width: 50px;
-    height: 20px;
+    width: 500px;
+    height: 40px;
     background-color: peachpuff;
     margin-top: 20px;
     text-align: top;
@@ -32,7 +39,7 @@ button {
 button:hover {
     cursor: pointer;
     background-color: aquamarine;
-    width: 70px;
+    width: 550px;
     height: 40px;
     
 
@@ -62,7 +69,6 @@ h1 {
 
 #head {
     width: 100px;
-
     /* position: absolute;
     top: 0;
     left: 0; */
@@ -82,7 +88,10 @@ h1 {
     left: 0px;
     color: grey;
     font-weight: bold;
+    font-size: small;
+
 }
+
 
 form {
     border: 1px solid black;
@@ -91,6 +100,7 @@ form {
     width: 200px;
     height: 500px; 
     margin-top: 10px;  
+    margin-right: 200px;
     background-color: pink
 }
 

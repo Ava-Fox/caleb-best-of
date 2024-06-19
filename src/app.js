@@ -74,7 +74,37 @@ app.get("/add", (req, res) => {
 })
 
 app.post("/add", (req, res) => {
+  /* 
+  If author is new, create new author id
+  If author in current authors:
+    insert new quote with their id
+  */
+  const authors = db.prepare("SELECT author_id, name FROM author;").all()
+  console.log(authors)
+
+  const body = req.body
+  const author = body.author
+  const quote = body.quote
+  const clip = body.clip
+  // GET AUTHOR ID
+  let authorId;
+  for (let i = 0; i < authors.length; i++){
+    if (authors[i]['name'] === author) {
+      authorId = authors[i]["author_id"]
+    }
+    console.log(authors[i]['name'])
+  }
+
+  if (!authorId) {
+    let statement = db.prepare("INSERT INTO author (name) VALUES (?);")
+    statement.run(author)
+    authorId = db.prepare("SELECT author_id FROM author WHERE name = ?;").run(author)
+  }
+  // INSERT QUOTE INTO DATABASE
+  db.prepare("INSERT INTO quote (author_id, quote, clip) VALUES (?, ?, ?);").run(authorId, quote, clip)
+  console.log(author, authorId)
   res.send("Got a post request")
+  const statement = db.prepare(`INSERT INTO author (name) VALUES (?);`)
 })
 
 console.log('now listening on http://localhost:3000')
