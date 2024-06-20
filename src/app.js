@@ -45,11 +45,9 @@ app.get('/videos', (req,res) => {
       authorId = authors[i]['author_id']
     }
   }
-  console.log(authorId)
   let videos = []
   if (authorId){
     videos = db.prepare("SELECT clip, quote FROM quote WHERE author_id = ?;").all(authorId);
-    console.log(videos);
   }
   res.render("videos.njk", {authors, videos})
 })
@@ -70,7 +68,8 @@ app.get('/chalk', (_req, res) => {
 })
 
 app.get("/add", (req, res) => {
-  res.render("add.njk");
+  const authors = db.prepare("SELECT author_id, name FROM author;").all()
+  res.render("add.njk", {authors});
 })
 
 app.post("/add", (req, res) => {
@@ -80,21 +79,14 @@ app.post("/add", (req, res) => {
     insert new quote with their id
   */
   const authors = db.prepare("SELECT author_id, name FROM author;").all()
-  console.log(authors)
 
   const body = req.body
   const author = body.author.toLowerCase()
   const quote = body.quote
-  let action = body.action
   let chalk = body.chalk
+  let dropped = body.dropped
   const clip = body.clip
-
-  if (action === "y") {
-    action = 1
-  }
-  else {
-    action = 0
-  }
+  let action = 0
 
   if (chalk === "y") {
     chalk = 1
@@ -102,6 +94,14 @@ app.post("/add", (req, res) => {
   else {
     chalk = 0
   }
+
+  if (dropped === "y") {
+    dropped = 1
+  }
+  else {
+    dropped = 0
+  }
+
   // GET AUTHOR ID
   let authorId;
   for (let i = 0; i < authors.length; i++){
@@ -117,6 +117,12 @@ app.post("/add", (req, res) => {
   }
   // INSERT QUOTE INTO DATABASE
   db.prepare("INSERT INTO quote (author_id, quote, is_chalk_instance, is_action, clip) VALUES (?, ?, ?, ?, ?);").run(authorId, quote, chalk, action, clip)
+  
+  let quoteId = db.prepare("SELECT quote_id FROM quote WHERE quote = ?;").all(quote)
+  quoteId = quoteId[0]['quote_id']
+  if (chalk) {
+    db.prepare("INSERT INTO chalk (quote_id, is_dropped) VALUES (?, ?);").run(quoteId, dropped)
+  }
 
   res.header("Location", `/?author_id=${authorId}`)
   res.sendStatus(303)
