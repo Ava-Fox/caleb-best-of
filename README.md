@@ -7,9 +7,9 @@ This is a collection of quotes I found to bring me absolute delight while watchi
     - [x] manually adding stuff to db
     - [x] add a route that displays data from db
         - get list of all best moments, and render template that loops over all of them and shows on page
-    - [ ] post route to send data to (adding more moments to db form)
+    - [x] post route to send data to (adding more moments to db form)
     - [ ] avafox.net/calebcurrywillyoumarryme
-    - [ ] initial page load get all author names/id
+    - [x] initial page load get all author names/id
 
 ###### Problems
     - [x] Created an automatic virtual env while downloading cs50 library and now can't access or open it because I don't know the name
@@ -45,24 +45,24 @@ This is a collection of quotes I found to bring me absolute delight while watchi
             - put in bookmarks bar, but don't gotta install it
             - while watching youtube could click it and it would save to the database
             - form for other info
-    - [ ] Navbar Left side of screen:
-        - [ ] Author
-            - [ ] Al
-                - [ ] The one Al quote
-            - [ ] Caleb
-                - [ ] All quotes
+    - [x] Navbar Left side of screen:
+        - [x] Author
+            - [x] Al
+                - [x] The one Al quote
+            - [x] Caleb
+                - [x] All quotes
                     - All quotes excluding chalk and moments
-                - [ ] Dropped chalk
+                - [x] Dropped chalk
                     - All ones in chalk table
-                - [ ] Video clips
+                - [x] Video clips
                     - If timestamps
     - [ ] SQL
         - [x] schema
-        - [ ] insert quotes and whatnot
-            - [ ] python tool
+        - [x] insert quotes and whatnot
+            - [x] python tool
                 - [x] general structure
                 - [x] enter info into dict
-                - [ ] go through dict info and enter into db
+                - [x] go through dict info and enter into db
 
         - Concatinated string for timestamps? Same link but add &t=?h?m?s
 
