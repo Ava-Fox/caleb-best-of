@@ -1,0 +1,13 @@
+{% extends "layout.njk"%}
+{% block main %} 
+    {% for quote in quotes %}
+    <table>
+        <tr>
+            <th> Quote </th>
+        </tr>
+        <td>
+            {{quote.quote}}
+        </td>
+    </table>
+    {% endfor%}
+{% endblock %}
