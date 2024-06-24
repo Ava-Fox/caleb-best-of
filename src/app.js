@@ -72,6 +72,7 @@ app.get("/add", (req, res) => {
   res.render("add.njk", {authors});
 })
 
+
 app.post("/add", (req, res) => {
   /* 
   If author is new, create new author id
@@ -128,6 +129,22 @@ app.post("/add", (req, res) => {
   res.sendStatus(303)
 })
 
+app.get("/password", (_req, res) => { 
+  res.render("password.njk")
+})
+
+app.post("/password", (req, res) => {
+  const body = req.body
+  let password = "whoopsIdroppedmychalk"
+  if (body.password === password) {
+    let quotes = db.prepare("SELECT * FROM quote").all()
+    res.render("database.njk", {quotes})
+  }
+  else {
+    res.render("evil.njk")
+  }
+  //  -access database (load file (csv file))
+})
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {

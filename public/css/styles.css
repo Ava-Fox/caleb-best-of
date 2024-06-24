@@ -28,6 +28,11 @@ body {
     background-image: url("/images/flower.png");
     /* cursor: url("sword.png"), auto; */
 }
+
+table, th, td {
+    border: 1px solid;
+  }
+  
 button {
     width: 500px;
     height: 40px;
