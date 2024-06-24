@@ -129,4 +129,4 @@ This is a collection of quotes I found to bring me absolute delight while watchi
         
 
 ###### Credits:
-    Huge shoutout to Will W., Al Sweigart, Peter Kang, Allie Jones, and Charlie Volow for pairing with me on this!
+    Huge shoutout to Will W., Al Sweigart, Peter Kang, Allie Jones, Evan Lane, and Charlie Volow for pairing with me on this!
